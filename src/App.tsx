@@ -1,3 +1,9 @@
+import { MessageField } from './components/message-field/message-field'
+
 export function App() {
-  return <div>chat-client</div>
+  return (
+    <div>
+      <MessageField />
+    </div>
+  )
 }

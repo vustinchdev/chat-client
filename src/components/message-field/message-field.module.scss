@@ -1,0 +1,47 @@
+.container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.textField {
+  resize: none;
+
+  width: 100%;
+  padding-right: 40px;
+
+  background-color: var(--color-dark-700);
+  border: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-info-700);
+  }
+}
+
+.buttonSend {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  padding: 2px;
+
+  border-radius: 50%;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-info-700);
+  }
+}
