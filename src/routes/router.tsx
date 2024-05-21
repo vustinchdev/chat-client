@@ -1,7 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { MainPage } from '@/pages'
-import { ChatPage } from '@/pages/chat-page'
+import { ChatPage, MainPage } from '@/pages'
 
 export const router = createBrowserRouter([
   {
