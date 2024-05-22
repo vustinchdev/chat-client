@@ -1,11 +1,9 @@
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { io } from 'socket.io-client'
+import { socket } from '@/common'
 
 import s from './main-page.module.scss'
-
-const socket = io('http://localhost:3009', { transports: ['websocket'] })
 
 export const MainPage = () => {
   const [data, setData] = useState({ room: '', userName: '' })
