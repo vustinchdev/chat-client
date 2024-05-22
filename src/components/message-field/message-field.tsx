@@ -5,10 +5,10 @@ import { iconSend } from '@/assets'
 import s from './message-field.module.scss'
 
 type Props = {
-  onClick: () => void
+  sendMessage: () => void
 } & ComponentPropsWithoutRef<'textarea'>
 
-export const MessageField = ({ onClick, value, ...rest }: Props) => {
+export const MessageField = ({ sendMessage, value, ...rest }: Props) => {
   const classNames = {
     buttonSend: s.buttonSend,
     container: s.container,
@@ -16,7 +16,7 @@ export const MessageField = ({ onClick, value, ...rest }: Props) => {
   }
 
   const handleClick = () => {
-    onClick()
+    sendMessage()
   }
 
   return (
