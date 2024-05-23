@@ -18,8 +18,13 @@ export const MainPage = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     socket.emit('join', { room, userName })
     setData({ room: '', userName: '' })
+
+    socket.on('userConnected', ({ userId }) => {
+      localStorage.setItem('userId', userId)
+    })
 
     navigate(`/chat`)
   }

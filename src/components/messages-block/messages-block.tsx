@@ -10,16 +10,19 @@ type Props = {
 export const MessagesBlock = ({ messages }: Props) => {
   const classNames = {
     container: s.container,
+    myMessage: s.myMessage,
     name: s.name,
   }
+
+  const userId = localStorage.getItem('userId')
 
   return (
     <div className={classNames.container}>
       {messages.map(message => {
         return (
-          <div key={message.id}>
+          <div className={userId === message.userId ? classNames.myMessage : ''} key={message.id}>
             <span className={classNames.name}>{message.userName}</span>
-            <Message>{message.text}</Message>
+            <Message userId={message.userId}>{message.text}</Message>
           </div>
         )
       })}
