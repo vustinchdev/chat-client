@@ -5,28 +5,40 @@ import { MessageField, MessagesBlock } from '@/components'
 
 import s from './chat-page.module.scss'
 
+export type MessageResponse = {
+  id: string
+  roomName: string
+  text: string
+  userId: string
+  userName: null | string
+}
+
 export const ChatPage = () => {
-  const [value, setValue] = useState('')
-  const [messages, setMessages] = useState<any>([])
+  const [message, setMessage] = useState('')
+  const [messages, setMessages] = useState<MessageResponse[]>([])
+
   const classNames = {
     container: s.container,
   }
 
   useEffect(() => {
-    socket.on('joinedChat', messages => {
+    socket.on('showRoomMessages', messages => {
       setMessages(messages)
     })
   }, [messages])
 
-  const handleSendMessage = () => {}
+  const handleSendMessage = () => {
+    socket.emit('sendMessage', message)
+    setMessage('')
+  }
 
   return (
     <div className={classNames.container}>
-      <MessagesBlock messages={messages} user={{ id: '', name: '' }} />
+      <MessagesBlock messages={messages} />
       <MessageField
-        onChange={e => setValue(e.currentTarget.value)}
+        onChange={e => setMessage(e.currentTarget.value)}
         sendMessage={handleSendMessage}
-        value={value}
+        value={message}
       />
     </div>
   )

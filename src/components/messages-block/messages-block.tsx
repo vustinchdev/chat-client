@@ -1,23 +1,13 @@
 import { Message } from '@/components'
+import { MessageResponse } from '@/pages'
 
 import s from './messages-block.module.scss'
 
-type MessageResponse = {
-  id: string
-  text: string
-}
-
-type UserResponse = {
-  id: string
-  name: string
-}
-
 type Props = {
   messages: MessageResponse[]
-  user: UserResponse
 }
 
-export const MessagesBlock = ({ messages, user }: Props) => {
+export const MessagesBlock = ({ messages }: Props) => {
   const classNames = {
     container: s.container,
     name: s.name,
@@ -28,7 +18,7 @@ export const MessagesBlock = ({ messages, user }: Props) => {
       {messages.map(message => {
         return (
           <div key={message.id}>
-            <span className={classNames.name}>{user.name}</span>
+            <span className={classNames.name}>{message.userName}</span>
             <Message>{message.text}</Message>
           </div>
         )
