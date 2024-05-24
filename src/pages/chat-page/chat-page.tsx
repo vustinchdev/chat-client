@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { socket } from '@/common'
-import { MessageField, MessagesBlock } from '@/components'
+import { MessageField, MessagesBlock, Page } from '@/components'
 
 import s from './chat-page.module.scss'
 
@@ -33,13 +33,15 @@ export const ChatPage = () => {
   }
 
   return (
-    <div className={classNames.container}>
-      <MessagesBlock messages={messages} />
-      <MessageField
-        onChange={e => setMessage(e.currentTarget.value)}
-        sendMessage={handleSendMessage}
-        value={message}
-      />
-    </div>
+    <Page>
+      <div className={classNames.container}>
+        <MessagesBlock messages={messages} />
+        <MessageField
+          onChange={e => setMessage(e.currentTarget.value)}
+          sendMessage={handleSendMessage}
+          value={message}
+        />
+      </div>
+    </Page>
   )
 }

@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { socket } from '@/common'
+import { Page } from '@/components'
 
 import s from './main-page.module.scss'
 
@@ -30,9 +31,9 @@ export const MainPage = () => {
   }
 
   return (
-    <div className={classNames.container}>
-      <p className={classNames.title}>Join</p>
-      <form onSubmit={handleSubmit}>
+    <Page>
+      <form className={classNames.container} onSubmit={handleSubmit}>
+        <p className={classNames.title}>Join</p>
         <input
           autoComplete={'off'}
           className={classNames.textField}
@@ -57,6 +58,6 @@ export const MainPage = () => {
           Sign In
         </button>
       </form>
-    </div>
+    </Page>
   )
 }
