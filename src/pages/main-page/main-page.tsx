@@ -25,6 +25,7 @@ export const MainPage = () => {
 
     socket.on('userConnected', ({ userId }) => {
       localStorage.setItem('userId', userId)
+      localStorage.setItem('roomName', room)
     })
 
     navigate(`/chat`)

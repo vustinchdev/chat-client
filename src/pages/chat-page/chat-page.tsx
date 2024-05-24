@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { logout } from '@/assets'
 import { socket } from '@/common'
 import { MessageField, MessagesBlock, Page } from '@/components'
 
@@ -18,7 +19,10 @@ export const ChatPage = () => {
   const [messages, setMessages] = useState<MessageResponse[]>([])
 
   const classNames = {
+    buttonLogout: s.buttonLogout,
     container: s.container,
+    header: s.header,
+    imageLogout: s.imageLogout,
   }
 
   useEffect(() => {
@@ -32,9 +36,19 @@ export const ChatPage = () => {
     setMessage('')
   }
 
+  const handleLogout = () => {}
+
+  const roomName = localStorage.getItem('roomName')
+
   return (
     <Page>
       <div className={classNames.container}>
+        <div className={classNames.header}>
+          <p>room: {roomName}</p>
+          <button className={classNames.buttonLogout} onClick={handleLogout}>
+            <img alt={'left room'} className={classNames.imageLogout} src={logout} />
+          </button>
+        </div>
         <MessagesBlock messages={messages} />
         <MessageField
           onChange={e => setMessage(e.currentTarget.value)}

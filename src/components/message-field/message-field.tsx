@@ -12,6 +12,7 @@ export const MessageField = ({ sendMessage, value, ...rest }: Props) => {
   const classNames = {
     buttonSend: s.buttonSend,
     container: s.container,
+    imageSendMessage: s.imageSendMessage,
     textField: s.textField,
   }
 
@@ -24,7 +25,7 @@ export const MessageField = ({ sendMessage, value, ...rest }: Props) => {
       <textarea className={classNames.textField} value={value} {...rest} />
       {value && (
         <button className={classNames.buttonSend} onClick={handleClick}>
-          <img alt={'send message'} src={iconSend} style={{ width: '100%' }} />
+          <img alt={'send message'} className={classNames.imageSendMessage} src={iconSend} />
         </button>
       )}
     </div>
