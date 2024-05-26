@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { logout } from '@/assets'
 import { socket } from '@/common'
@@ -17,6 +18,7 @@ export type MessageResponse = {
 export const ChatPage = () => {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState<MessageResponse[]>([])
+  const navigate = useNavigate()
 
   const classNames = {
     buttonLogout: s.buttonLogout,
@@ -36,15 +38,23 @@ export const ChatPage = () => {
     setMessage('')
   }
 
-  const handleLogout = () => {}
+  const handleLogout = () => {
+    const roomName = localStorage.getItem('roomName')
+    const userId = localStorage.getItem('userId')
 
-  const roomName = localStorage.getItem('roomName')
+    socket.emit('disconect', { roomName, userId })
+
+    localStorage.removeItem('roomName')
+    localStorage.removeItem('userId')
+
+    navigate('/')
+  }
 
   return (
     <Page>
       <div className={classNames.container}>
         <div className={classNames.header}>
-          <p>room: {roomName}</p>
+          <p>room: {localStorage.getItem('roomName')}</p>
           <button className={classNames.buttonLogout} onClick={handleLogout}>
             <img alt={'left room'} className={classNames.imageLogout} src={logout} />
           </button>
