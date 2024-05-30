@@ -51,21 +51,19 @@ export const ChatPage = () => {
   }
 
   return (
-    <Page>
-      <div className={classNames.container}>
-        <div className={classNames.header}>
-          <p>room: {localStorage.getItem('roomName')}</p>
-          <button className={classNames.buttonLogout} onClick={handleLogout}>
-            <img alt={'left room'} className={classNames.imageLogout} src={logout} />
-          </button>
-        </div>
-        <MessagesBlock messages={messages} />
-        <MessageField
-          onChange={e => setMessage(e.currentTarget.value)}
-          sendMessage={handleSendMessage}
-          value={message}
-        />
+    <div className={classNames.container}>
+      <div className={classNames.header}>
+        <p>room: {localStorage.getItem('roomName')}</p>
+        <button className={classNames.buttonLogout} onClick={handleLogout}>
+          <img alt={'left room'} className={classNames.imageLogout} src={logout} />
+        </button>
       </div>
-    </Page>
+      <MessagesBlock messages={messages} />
+      <MessageField
+        onChange={e => setMessage(e.currentTarget.value)}
+        sendMessage={handleSendMessage}
+        value={message}
+      />
+    </div>
   )
 }

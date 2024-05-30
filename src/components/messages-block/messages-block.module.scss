@@ -1,7 +1,11 @@
 .container {
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  margin: 56px 0 58px;
+  padding: 0 20px;
 }
 
 .name {
